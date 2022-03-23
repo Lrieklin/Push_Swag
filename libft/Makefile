@@ -14,7 +14,7 @@ SRCS    =   ft_atoi.c       ft_isalpha.c        ft_itoa.c\
             ft_strjoin.c
 
 SRCS_B  =   ft_lstnew_bonus.c       ft_lstadd_front_bonus.c\
-			ft_lstsize_bonus.c     
+			ft_lstsize_bonus.c      ft_lstadd_back_bonus.c
 
 HEADER	=	libft.h
 

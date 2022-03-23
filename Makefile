@@ -2,11 +2,14 @@ NAME	=	push_swap
 
 #SRCS	=	$(wildcard *.c)
 SRCS	=	main.c	\
+			algoritm.c\
+			mini_sorting.c\
 			parser.c \
 			sorting_operation_swap.c \
 			sorting_operation_push.c \
 			sorting_operation_rotate.c \
-			sorting_operation_reverse_rotate.c
+			sorting_operation_reverse_rotate.c\
+			search_min_max.c\
 			
 HEADER	=	pushswap.h
 

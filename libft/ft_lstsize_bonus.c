@@ -6,21 +6,25 @@
 /*   By: lrieklin <lrieklin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 04:06:16 by lrieklin          #+#    #+#             */
-/*   Updated: 2022/02/16 19:56:13 by lrieklin         ###   ########.fr       */
+/*   Updated: 2022/03/22 22:31:21 by lrieklin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstsize(t_stack *lst)
+int	ft_lstsize(t_stack **stack)
 {
+	t_stack	*tmp;
 	int		i;
 
 	i = 0;
-	while (lst)
+	if (!stack && !*stack)
+		return (0);
+	tmp = *stack;
+	while (tmp != NULL)
 	{
-		lst = lst->next;
 		i++;
+		tmp = tmp->next;
 	}
 	return (i);
 }

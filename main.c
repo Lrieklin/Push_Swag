@@ -6,7 +6,7 @@
 /*   By: lrieklin <lrieklin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 19:11:49 by lrieklin          #+#    #+#             */
-/*   Updated: 2022/02/18 23:19:56 by lrieklin         ###   ########.fr       */
+/*   Updated: 2022/03/23 22:45:40 by lrieklin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,32 @@
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
-	//t_stack *stack_b;
+	t_stack	*stack_b;
+	int		count;
 
+	count = argc - 1;
 	if (argc == 1)
 		return (1);
-	//stack_b = NULL; 
-	stack_a = ready_stack(argc, argv); 
-	//proverka_na_dublikaty(stack);
-	// check_for_sort(stack);
-	reverse_rotate(&stack_a);
-	while(stack_a != NULL)
+	if (argc > 1)
 	{
-		printf("stack_a == %d\n", stack_a->index);
-		stack_a = stack_a->next;
+		stack_b = NULL;
+		check_for_digit(argv);
+		check_borders_int(argc, argv);
+		stack_a = ready_stack(argc, argv);
+		check_for_sort(stack_a);
+		proverka_na_dublikaty(stack_a);
+		ft_indexing(&stack_a, argc - 1);
+		if (count >= 2 && count < 5)
+			sorting_elements(&stack_a, &stack_b, argc);
+		if (count > 5)
+			sort_100(&stack_a, &stack_b, argc);
+		//stack_clear(stack_a);
+		//stack_clear(stack_b);
 	}
-	printf("argc == %d", argc);
-	//from_char_to_int(argc, &argv[1]);
-	//printf("%d, %zu\n", ft_atoi(argv[1]), ft_strlen(argv[1]));
-
-	// print();
+	else
+	{
+		write (2, "Errorrrr\n", 7);
+		write(2, "Enter the numbers\n", 19);
+	}
+	return (0);
 }

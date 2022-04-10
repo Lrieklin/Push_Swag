@@ -6,25 +6,30 @@
 /*   By: lrieklin <lrieklin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 18:42:27 by lrieklin          #+#    #+#             */
-/*   Updated: 2022/02/15 21:24:07 by lrieklin         ###   ########.fr       */
+/*   Updated: 2022/03/25 20:06:36 by lrieklin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-static int	my_func(unsigned long res, int minus, int counter)
+static int	my_func(long res, int minus, int counter)
 {
-	if (counter > 19)
+	if (counter > 10)
 	{
-		if (minus)
-			return ((int)(-9223372036854775807L - 1L)); // 0
-		return ((int)9223372036854775807L); // -1
+		write(2, "Error\n", 6);
+		exit(1);
 	}
-	if (counter == 19 && res >= 9223372036854775807L && !minus)
-		return ((int)9223372036854775807L);
-	if (counter == 19 && res >= (unsigned long)9223372036854775807
-		+(unsigned long)1L && minus)
-		return ((int)(-9223372036854775807L - 1L));
+	if (counter == 10 && res > 2147483647 && !minus)
+	{
+		write(2, "Error\n", 6);
+		exit(1);
+	}
+	if (counter == 10 && res > (long)2147483648 && minus)
+	{
+		write(2, "Error\n", 6);
+		exit(1);
+	}
 	if (minus)
 		return ((int)(res * -1));
 	return ((int)res);
@@ -44,7 +49,7 @@ static const char	*ft_plus_minus(const char *str, int *minus)
 int	ft_atoi(const char *str)
 {
 	int				i;
-	unsigned long	res;
+	long			res;
 	int				minus;
 	int				counter;
 

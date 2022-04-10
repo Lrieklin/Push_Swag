@@ -1,43 +1,36 @@
-NAME	=	push_swap
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: lrieklin <lrieklin@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/03/24 22:11:05 by lrieklin          #+#    #+#              #
+#    Updated: 2022/03/24 22:14:45 by lrieklin         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-#SRCS	=	$(wildcard *.c)
-SRCS	=	main.c	\
-			algoritm.c\
-			mini_sorting.c\
-			parser.c \
-			sorting_operation_swap.c \
-			sorting_operation_push.c \
-			sorting_operation_rotate.c \
-			sorting_operation_reverse_rotate.c\
-			search_min_max.c\
-			
-HEADER	=	pushswap.h
+.PHONY		:	all clean fclean re bonus rebonus libft
 
-OBJ		=	$(SRCS:%.c=%.o)
+all			:	libft 
+				make -C src
 
-CC		=	cc
+bonus		:	libft
+				make -C bonus
 
-CFLAGS	=	-Wall -Wextra -Werror
+libft		:
+				make -C libft bonus
 
-LIBFT	=	libft/libft.a
+clean		:
+				make -C src clean
+				make -C bonus clean
+				make -C libft clean
 
-.PHONY	:	all clean fclean re
+fclean		:
+				make -C src fclean
+				make -C bonus fclean
+				make -C libft fclean
+	
+re			:	fclean all
 
-all		:	$(NAME)
-
-$(NAME)	:	$(LIBFT) $(OBJ)
-	cc $(OBJ) $(LIBFT) -o $(NAME)
-
-$(LIBFT):
-	make -C libft bonus
-
-%.o		:	%.c $(HEADER)
-	$(CC) $(CFLAGS) -c $< -o $@
-
-clean	:
-	rm -f $(OBJ) $(OBJ_B)
-
-fclean	:	clean
-	rm -f $(NAME)
-
-re		:	fclean all
+rebonus		:	fclean bonus

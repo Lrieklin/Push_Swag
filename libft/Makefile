@@ -14,7 +14,8 @@ SRCS    =   ft_atoi.c       ft_isalpha.c        ft_itoa.c\
             ft_strjoin.c
 
 SRCS_B  =   ft_lstnew_bonus.c       ft_lstadd_front_bonus.c\
-			ft_lstsize_bonus.c      ft_lstadd_back_bonus.c
+			ft_lstsize_bonus.c      ft_lstadd_back_bonus.c\
+            ft_stack_clear_bonus.c
 
 HEADER	=	libft.h
 
@@ -22,7 +23,7 @@ OBJ		=	$(SRCS:.c=.o)
 
 OBJ_B	=	$(SRCS_B:%.c=%.o)
 
-CC		=	gcc
+CC		=	cc
 
 CFLAGS	=	-Wall -Wextra -Werror -I $(HEADER)
 
@@ -37,7 +38,7 @@ $(NAME)	:	$(OBJ) $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 bonus :
-	@make OBJ="$(OBJ_B)" all
+	@make OBJ="$(OBJ) $(OBJ_B)" all
 
 clean	:
 		rm -f $(OBJ) $(OBJ_B)

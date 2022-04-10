@@ -6,7 +6,7 @@
 /*   By: lrieklin <lrieklin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 14:00:33 by lrieklin          #+#    #+#             */
-/*   Updated: 2022/03/22 22:32:26 by lrieklin         ###   ########.fr       */
+/*   Updated: 2022/03/24 22:24:59 by lrieklin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,13 @@ typedef struct s_stack
 {
 	int				value;
 	int				index;
-	struct s_stack	*next; //указатель на предыдущий элемент
+	struct s_stack	*next;
 }	t_stack;
 
 int		ft_lstsize(t_stack **lst);
 t_stack	*ft_lstnew(int content);
 void	ft_lstadd_front(t_stack **lst, t_stack *new);
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
-
+void	stack_clear(t_stack *stack);
 
 #endif

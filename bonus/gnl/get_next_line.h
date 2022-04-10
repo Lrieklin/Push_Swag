@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrieklin <lrieklin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/18 20:05:17 by lrieklin          #+#    #+#             */
-/*   Updated: 2022/03/24 22:25:27 by lrieklin         ###   ########.fr       */
+/*   Created: 2021/11/29 14:26:51 by lrieklin          #+#    #+#             */
+/*   Updated: 2022/01/09 05:29:18 by lrieklin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-void	ft_lstadd_back(t_stack **lst, t_stack *new)
-{
-	t_stack	*p;
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 5
+# endif
 
-	p = *lst;
-	if (*lst == NULL)
-		*lst = new;
-	while ((p)->next != NULL)
-		p = p->next;
-	p->next = new;
-	new->next = NULL;
-}
+# include <stdio.h>
+# include <fcntl.h>
+# include <stdlib.h>
+# include <unistd.h>
+
+char	*get_next_line(int fd);
+size_t	ft_strlen(const char *s);
+char	*ft_strdup(const char *s1);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strchr(const char *s, int c);
+
+#endif
